@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <[SLOT:head]> -->
+<style>
+body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; }
+label { display: block; margin: 0.5rem 0; }
+input { width: 8rem; margin-left: 0.5rem; }
+button { margin: 0.25rem 0.25rem 0.25rem 0; }
+output { display: block; margin-top: 1rem; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+<h1>$$projectName$$ <small>v$$version$$</small></h1>
+<label>Number A <input id="a" type="number" value="0"></label>
+<label>Number B <input id="b" type="number" value="0"></label>
+<div id="buttons">
+<!-- <[SLOT:buttons]> -->
+</div>
+<output id="result" aria-live="polite">Result: -</output>
+</main>
+<script>
+const ops = {
+// <[SLOT:ops]>
+}
+
+const el = (id) => document.getElementById(id)
+
+document.querySelectorAll('button[data-op]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const a = Number(el('a').value)
+    const b = Number(el('b').value)
+    try {
+      el('result').textContent = 'Result: ' + ops[btn.dataset.op](a, b)
+    } catch (err) {
+      el('result').textContent = 'Error: ' + err.message
+    }
+  })
+})
+</script>
+</body>
+</html>

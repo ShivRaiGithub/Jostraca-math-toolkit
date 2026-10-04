@@ -1,0 +1,17 @@
+{
+  "name": "math-toolkit-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gen": "node gen/generate.mjs",
+    "gen:run2": "node gen/generate.mjs gen/config.run2.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "jostraca": "^0.39.0"
+  }
+}
